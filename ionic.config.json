@@ -1,0 +1,7 @@
+{
+  "name": "falconry",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

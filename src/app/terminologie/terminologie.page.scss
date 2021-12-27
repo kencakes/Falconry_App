@@ -1,0 +1,20 @@
+.search{
+  display: flex;
+
+  ion-input{
+    margin: 10px;
+    --padding-start: 10px;
+    --background: #E7E6E8;
+    border-radius: 8px;
+  }
+
+  ion-icon{
+    margin-left: 10px;
+  }
+}
+
+p {
+  text-overflow: inherit;
+  overflow: inherit;
+}
+

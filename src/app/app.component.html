@@ -1,0 +1,41 @@
+<ion-app>
+  <ion-menu menuId="main-menu" content-id="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="https://img.freepik.com/free-photo/front-view-person-with-short-hair_23-2148749599.jpg?size=626&ext=jpg" alt="avatar">
+          </ion-avatar>
+          <ion-label>
+            <p>Hello</p>
+            <h3>Kendra Vansaet</h3>
+          </ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <!-- Vogels / Home -->
+        <ion-item routerLink="home">
+          <ion-icon name="egg-outline" slot="start"></ion-icon>
+          <ion-label>Vogels</ion-label>
+        </ion-item>
+
+        <!-- Terminologie -->
+        <ion-item  routerLink="terminologie">
+          <ion-icon name="book-outline" slot="start"></ion-icon>
+          <ion-label>Terminologie</ion-label>
+        </ion-item>
+
+        <!--  Favorites -->
+        <ion-item>
+          <ion-icon name="heart-outline" slot="start"></ion-icon>
+          <ion-label>Favorites</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

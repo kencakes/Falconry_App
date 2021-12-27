@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>Kendra Vansaet</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img src="https://img.freepik.com/free-photo/front-view-person-with-short-hair_23-2148749599.jpg?size=626&ext=jpg" alt="avatar">
+      </ion-avatar>
+    </ion-item>
+  </ion-toolbar>
+
+  <!-- searchbar -->
+  <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
+
+  </ion-searchbar>
+</ion-header>
+
+<!-- Bird list -->
+<ion-content>
+  <ion-list *ngFor="let entry of data">
+    <ion-list-header>
+      {{entry.title}}
+    </ion-list-header>
+
+    <ion-item *ngFor="let bird of entry.birds | filter:searchTerm">
+      <ion-avatar slot="start">
+        <img src="./assets/img/{{bird.img}}" alt="{{bird.latijns}}">
+      </ion-avatar>
+
+      <ion-label>
+        <h2>{{bird.name}}</h2>
+        <p>{{bird.latijns}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
