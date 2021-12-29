@@ -11,7 +11,7 @@ export class BirdDetailsPage implements OnInit {
   @Input() id: string;
   bird: Bird = null;
 
-  constructor(private birdService: BirdService) { }
+  constructor(private birdService: BirdService, public modalController: ModalController) { }
 
   ngOnInit() {
     this.birdService.getBirdById(this.id).subscribe(res => {

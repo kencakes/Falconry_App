@@ -15,7 +15,7 @@ export class HomePage{
   birds: Bird[] = [];
 
   constructor(private birdService: BirdService, private cd: ChangeDetectorRef,
-              private alertCtrl: AlertController, private modalCtrl: ModalController) {
+              private alertCtrl: AlertController, private modalController: ModalController) {
     this.birdService.getBirds().subscribe(res => {
       this.birds = res;
       this.cd.detectChanges();
@@ -23,13 +23,11 @@ export class HomePage{
   }
 
   async openDetails(bird: Bird) {
-    const modal = await this.modalCtrl.create({
+    const modal = await this.modalController.create({
       component: BirdDetailsPage,
       componentProps: { id: bird.id },
-      breakpoints: [0, 0.2, 0.5, 1],
-      initialBreakpoint: 0.2,
     });
 
-    await modal.present();
+    return await modal.present();
   }
 }
