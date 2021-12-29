@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'terminologie',
     loadChildren: () => import('./terminologie/terminologie.module').then( m => m.TerminologiePageModule)
   },
+  {
+    path: 'bird-details',
+    loadChildren: () => import('./bird-details/bird-details.module').then( m => m.BirdDetailsPageModule)
+  },
 ];
 
 @NgModule({

@@ -18,25 +18,22 @@
       </ion-avatar>
     </ion-item>
   </ion-toolbar>
-
-  <!-- searchbar -->
-  <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
-
-  </ion-searchbar>
 </ion-header>
 
-<!-- Bird list -->
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let bird of birds | filter:searchTerm" (click)="openDetails(bird)">
-      <ion-avatar slot="start">
-        <img src="{{bird.image}}" alt="{{bird.latijns}}">
-      </ion-avatar>
+  <div *ngIf="bird">
+      <ion-card>
+        <img src="{{bird.image}}" alt="{{bird.latijns}}"/>
+        <ion-card-header>
+          <ion-card-title>{{bird.name}}</ion-card-title>
+          <ion-card-subtitle>{{bird.latijns}}</ion-card-subtitle>
+        </ion-card-header>
 
-      <ion-label>
-        <h2>{{bird.name}}</h2>
-        <p>{{bird.latijns}}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+        <ion-card-content>
+          {{bird.about}}
+        </ion-card-content>
+      </ion-card>
+  </div>
 </ion-content>
+
+
