@@ -34,6 +34,13 @@
           <ion-label>Favorites</ion-label>
         </ion-item>
 
+        <!--  Dark Theme toggle -->
+        <ion-item>
+          <ion-icon slot="start" name="moon"></ion-icon>
+          <ion-toggle (ionChange)="toggleTheme($event)" slot="end"></ion-toggle>
+          <ion-label>Dark theme</ion-label>
+        </ion-item>
+
       </ion-list>
     </ion-content>
   </ion-menu>
