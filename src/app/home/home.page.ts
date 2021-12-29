@@ -26,6 +26,8 @@ export class HomePage{
     const modal = await this.modalCtrl.create({
       component: BirdDetailsPage,
       componentProps: { id: bird.id },
+      breakpoints: [0, 0.2, 0.5, 1],
+      initialBreakpoint: 0.2,
     });
 
     await modal.present();
