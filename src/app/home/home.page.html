@@ -25,15 +25,10 @@
   </ion-searchbar>
 </ion-header>
 
-<!-- Strigiformes List -->
+<!-- Bird list -->
 <ion-content>
   <ion-list>
-    <ion-list-header>
-      Strigiformes
-    </ion-list-header>
-
-    <ng-container *ngFor="let bird of birds | filter:searchTerm">
-      <ion-item *ngIf="bird.category === 'Strigiformes'" (click)="openDetails(bird)">
+    <ion-item *ngFor="let bird of birds | filter:searchTerm" (click)="openDetails(bird)">
       <ion-avatar slot="start">
         <img src="{{bird.image}}" alt="{{bird.latijns}}">
       </ion-avatar>
@@ -43,44 +38,5 @@
         <p>{{bird.latijns}}</p>
       </ion-label>
     </ion-item>
-    </ng-container>
-
-<!-- Falconidae List -->
-    <ion-list-header>
-      Falconidae
-    </ion-list-header>
-
-    <ng-container *ngFor="let bird of birds | filter:searchTerm">
-      <ion-item *ngIf="bird.category === 'Falconidae'" (click)="openDetails(bird)">
-        <ion-avatar slot="start">
-          <img src="{{bird.image}}" alt="{{bird.latijns}}">
-        </ion-avatar>
-
-        <ion-label>
-          <h2>{{bird.name}}</h2>
-          <p>{{bird.latijns}}</p>
-        </ion-label>
-      </ion-item>
-    </ng-container>
-
-    <!-- Accipitridae List -->
-    <ion-list-header>
-      Accipitridae
-    </ion-list-header>
-
-    <ng-container *ngFor="let bird of birds | filter:searchTerm">
-      <ion-item *ngIf="bird.category === 'Accipitridae'" (click)="openDetails(bird)">
-        <ion-avatar slot="start">
-          <img src="{{bird.image}}" alt="{{bird.latijns}}">
-        </ion-avatar>
-
-        <ion-label>
-          <h2>{{bird.name}}</h2>
-          <p>{{bird.latijns}}</p>
-        </ion-label>
-      </ion-item>
-    </ng-container>
   </ion-list>
 </ion-content>
-
-
