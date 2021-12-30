@@ -1,0 +1,15 @@
+<ion-content>
+  <div *ngIf="bird">
+    <ion-card>
+      <img src="{{bird.image}}" alt="{{bird.latijns}}"/>
+      <ion-card-header>
+        <ion-card-title>{{bird.name}}</ion-card-title>
+        <ion-card-subtitle>{{bird.latijns}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{bird.about}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

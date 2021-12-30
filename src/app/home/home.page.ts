@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import accipitridae from '../../assets/data/accipitridae.json';
-import falconidae from '../../assets/data/falconidae.json';
-import strigiformes from '../../assets/data/strigiformes.json';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BirdService, Bird } from '../services/bird.service';
+import { BirdDetailsPage } from '../bird-details/bird-details.page';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +9,24 @@ import strigiformes from '../../assets/data/strigiformes.json';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage{
-  // Props
+
   searchTerm: string;
+  birds: Bird[] = [];
 
-  data = [
-    {
-      title: 'Falconidae',
-      birds: falconidae
-    },
-    {
-      title: 'Accipitridae',
-      birds: accipitridae
-    },
-    {
-      title: 'Strigiformes',
-      birds: strigiformes
-    }
-  ];
+  constructor(private birdService: BirdService, private cd: ChangeDetectorRef, private alertCtrl: AlertController,
+              private modalController: ModalController) {
+    this.birdService.getBirds().subscribe(res => {
+      this.birds = res;
+      this.cd.detectChanges();
+    });
+  }
 
-  constructor() {}
+  async openDetails(bird: Bird) {
+    const modal = await this.modalController.create({
+      component: BirdDetailsPage,
+      componentProps: { id: bird.id },
+    });
 
-  // Filtert op naam
+    return await modal.present();
+  }
 }
