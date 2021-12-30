@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\kenta\\.android\\Falconry_Application.jks')
+            keyAlias 'Falconry_Application'
+            storePassword 'W{EsfbXc4@hk%CQe4&s'
+            keyPassword 'W{EsfbXc4@hk%CQe4&s'
+        }
+    }
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "io.ionic.starter"
@@ -19,7 +27,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+          signingConfig signingConfigs.debug
         }
+      debug {
+        signingConfig signingConfigs.debug
+      }
     }
 }
 
