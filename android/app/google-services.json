@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "286150157865",
+    "project_id": "falconryshop-1c19e",
+    "storage_bucket": "falconryshop-1c19e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286150157865:android:c24e93948cddb97fbc5e38",
+        "android_client_info": {
+          "package_name": "com.vansaet.kendra.falconry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286150157865-mdn656a0shtd3cqg9ovroglgph3b9sqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vansaet.kendra.falconry",
+            "certificate_hash": "b51e57b24c0a58c6ee991b6cac793ca63dcbbfde"
+          }
+        },
+        {
+          "client_id": "286150157865-7a2ah6o4uc083cuerut00srqhrre4q1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKlFZEFdMQFT2cdzYD5y4G60nFGDw-gck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286150157865-7a2ah6o4uc083cuerut00srqhrre4q1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
