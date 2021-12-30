@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'bird-details',
     loadChildren: () => import('./bird-details/bird-details.module').then( m => m.BirdDetailsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 
 ];
 
