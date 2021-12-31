@@ -2,6 +2,18 @@
   <div *ngIf="bird">
     <ion-card>
       <img src="{{bird.image}}" alt="{{bird.latijns}}"/>
+      <ion-chip outline color="success">
+        <ion-label>1 - 4 eieren</ion-label>
+      </ion-chip>
+
+      <ion-chip outline color="primary">
+        <ion-label>750 - 1100 g</ion-label>
+      </ion-chip>
+
+      <ion-chip outline color="Secondary">
+        <ion-label>Noord en Zuid Amerika</ion-label>
+      </ion-chip>
+
       <ion-card-header>
         <ion-card-title>{{bird.name}}</ion-card-title>
         <ion-card-subtitle>{{bird.latijns}}</ion-card-subtitle>
