@@ -11,22 +11,22 @@
     <ion-item lines="none" slot="end">
       <ion-label>
         <p>Hello</p>
-        <h3>Kendra Vansaet</h3>
+        <h3>{{authService.getDisplayName()}}</h3>
       </ion-label>
       <ion-avatar slot="end">
-        <img src="https://img.freepik.com/free-photo/front-view-person-with-short-hair_23-2148749599.jpg?size=626&ext=jpg" alt="avatar">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
       </ion-avatar>
     </ion-item>
   </ion-toolbar>
-
-  <!-- searchbar -->
-  <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
-
-  </ion-searchbar>
 </ion-header>
 
 <!-- Strigiformes List -->
 <ion-content>
+  <!-- searchbar -->
+  <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
+
+  </ion-searchbar>
+
   <ion-list>
     <ion-list-header>
       Strigiformes

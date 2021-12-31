@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BirdService, Bird } from '../services/bird.service';
 import { BirdDetailsPage } from '../bird-details/bird-details.page';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage{
   birds: Bird[] = [];
 
   constructor(private birdService: BirdService, private cd: ChangeDetectorRef, private alertCtrl: AlertController,
-              private modalController: ModalController) {
+              private modalController: ModalController, public authService: AuthService) {
     this.birdService.getBirds().subscribe(res => {
       this.birds = res;
       this.cd.detectChanges();

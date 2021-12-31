@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import data from '../../assets/data/data.json';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-terminologie',
@@ -11,7 +12,7 @@ export class TerminologiePage implements OnInit {
 
   data = [];
 
-  constructor() {
+  constructor(public authService: AuthService) {
     this.getTerms();
   }
 
