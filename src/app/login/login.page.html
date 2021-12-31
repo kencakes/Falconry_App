@@ -44,12 +44,22 @@
     <!-- GitHub Login -->
     <ion-row>
       <ion-col>
-        <ion-button expand="block" fill="outline" shape="round" color="dark">
+        <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="authService.signInWithGithub()">
           <ion-icon slot="start" name="logo-github"></ion-icon>
           Github
         </ion-button>
       </ion-col>
     </ion-row>
+
+      <!-- Anonymous Login -->
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" shape="round" color="success" (click)="authService.signInAnonymously()">
+            <ion-icon slot="start" name="person-circle"></ion-icon>
+            Guest
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </div>
 </ion-content>

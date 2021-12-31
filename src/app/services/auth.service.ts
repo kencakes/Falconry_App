@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
-import { Auth, signInWithCredential, signInWithPopup, signInWithRedirect, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, GithubAuthProvider, User } from 'firebase/auth';
+import { Auth, signInWithCredential, signOut, signInAnonymously } from '@angular/fire/auth';
+import { updateProfile, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -10,7 +10,6 @@ import { Capacitor } from '@capacitor/core';
 })
 export class AuthService {
   private currentUser: null | User = null;
-  private verificationId: string;
 
   constructor(public auth: Auth, public router: Router) {
     this.auth.onAuthStateChanged(user => this.setCurrentUser(user));
@@ -62,22 +61,21 @@ export class AuthService {
     }
   }
 
-  async sendPhoneVerificationCode(phoneNumber: string): Promise<void> {
-    if (!Capacitor.isNativePlatform()) {
-      return;
-    }
-
-    const {verificationId} = await FirebaseAuthentication.signInWithPhoneNumber({phoneNumber});
-    this.verificationId = verificationId;
+  signInAnonymously(){
+    signInAnonymously(this.auth)
+      .then(() => {
+        // Signed in..
+      });
   }
 
-  async signInWithPhoneNumber(verificationCode: string): Promise<void> {
-    if (!Capacitor.isNativePlatform()) {
-      return;
+  async signInWithGithub(): Promise<void>{
+    const {credential: {accessToken}} = await FirebaseAuthentication.signInWithGithub();
+
+    if(Capacitor.isNativePlatform()){
+      const credential = GithubAuthProvider.credential(accessToken);
+      await signInWithCredential(this.auth, credential);
     }
-    const credential = PhoneAuthProvider.credential(this.verificationId, verificationCode);
-    await signInWithCredential(this.auth, credential);
-  };
+  }
 
   async updateDisplayName(displayName: string): Promise<void> {
     await updateProfile(this.auth.currentUser, {
