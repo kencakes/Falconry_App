@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
-import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, User } from 'firebase/auth';
+import { Auth, signInWithCredential, signInWithPopup, signInWithRedirect, signOut } from '@angular/fire/auth';
+import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, GithubAuthProvider, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -49,6 +49,15 @@ export class AuthService {
 
     if (Capacitor.isNativePlatform()) {
       const credential = GoogleAuthProvider.credential(idToken, accessToken);
+      await signInWithCredential(this.auth, credential);
+    }
+  }
+
+  async signInWithFacebook(): Promise<void>{
+    const {credential:{accessToken}} =  await FirebaseAuthentication.signInWithFacebook();
+
+    if(Capacitor.isNativePlatform()){
+      const credential = FacebookAuthProvider.credential(accessToken);
       await signInWithCredential(this.auth, credential);
     }
   }
