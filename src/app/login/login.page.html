@@ -16,6 +16,17 @@
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <!-- GitHub Login -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="authService.signInWithGithub()">
+          <ion-icon slot="start" name="logo-github"></ion-icon>
+          Github
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 </ion-content>
 

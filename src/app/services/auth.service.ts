@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
-import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, User } from 'firebase/auth';
+import { Auth, signInWithCredential, signOut, signInWithRedirect, getRedirectResult, signInWithPopup } from '@angular/fire/auth';
+import { updateProfile, GoogleAuthProvider, GithubAuthProvider, PhoneAuthProvider,FacebookAuthProvider, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -50,6 +50,33 @@ export class AuthService {
     if (Capacitor.isNativePlatform()) {
       const credential = GoogleAuthProvider.credential(idToken, accessToken);
       await signInWithCredential(this.auth, credential);
+    }
+  }
+
+  async signInWithGithubb(): Promise<void>{
+    const{credential: {accessToken}} = await FirebaseAuthentication.signInWithGithub();
+
+    if(Capacitor.isNativePlatform()){
+      const credential = GithubAuthProvider.credential(accessToken);
+      await signInWithCredential(this.auth, credential);
+    }
+  }
+
+  async signInWithGithub(): Promise<void>{
+    const provider = new FacebookAuthProvider();
+    provider.addScope('user_birthday, email, public_profile');
+
+    await signInWithRedirect(this.auth, provider);
+// This will trigger a full page redirect away from your app
+
+// After returning from the redirect when your app initializes you can obtain the result
+    const result = await getRedirectResult(this.auth);
+    if (result) {
+      // This is the signed-in user
+      const user = result.user;
+      // This gives you a Github Access Token.
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
     }
   }
 
