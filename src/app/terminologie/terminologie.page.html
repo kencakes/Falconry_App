@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Header -->
+<ion-content [fullscreen]="true">
+  <!-- Custom Refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="circles" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header class="ion-no-border">
+
+    <!-- searchbar -->
+    <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
+    </ion-searchbar>
+
+    <!-- List of words -->
+    <ion-item-group *ngFor="let item of data  | filter:searchTerm">
+      <!-- Fetched letters -->
+      <ion-item-divider sticky>
+        <ion-label>
+          {{item.key}}
+        </ion-label>
+      </ion-item-divider>
+
+      <!-- Terms -->
+      <ion-item *ngFor="let term of item.terms  | filter:searchTerm">
+        <ion-label >
+          <h2>{{term.woord}}</h2>
+          <p class="ion-text-wrap">{{term.definitie}}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-item-group>
+  </ion-header>
+</ion-content>
+

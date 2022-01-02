@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Strigiformes List -->
+<ion-content>
+  <!-- searchbar -->
+  <ion-searchbar [(ngModel)]="searchTerm" showCancelButton="focus" debounce="100" spellcheck="false">
+
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-list-header>
+      Strigiformes
+    </ion-list-header>
+
+    <ng-container *ngFor="let bird of birds | filter:searchTerm">
+      <ion-item *ngIf="bird.category === 'Strigiformes'" (click)="openDetails(bird)">
+        <ion-avatar slot="start">
+          <img src="{{bird.image}}" alt="{{bird.latijns}}">
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{bird.name}}</h2>
+          <p>{{bird.latijns}}</p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+    <!-- Falconidae List -->
+    <ion-list-header>
+      Falconidae
+    </ion-list-header>
+
+    <ng-container *ngFor="let bird of birds | filter:searchTerm">
+      <ion-item *ngIf="bird.category === 'Falconidae'" (click)="openDetails(bird)">
+        <ion-avatar slot="start">
+          <img src="{{bird.image}}" alt="{{bird.latijns}}">
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{bird.name}}</h2>
+          <p>{{bird.latijns}}</p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+    <!-- Accipitridae List -->
+    <ion-list-header>
+      Accipitridae
+    </ion-list-header>
+
+    <ng-container *ngFor="let bird of birds | filter:searchTerm">
+      <ion-item *ngIf="bird.category === 'Accipitridae'" (click)="openDetails(bird)">
+        <ion-avatar slot="start">
+          <img src="{{bird.image}}" alt="{{bird.latijns}}">
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{bird.name}}</h2>
+          <p>{{bird.latijns}}</p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

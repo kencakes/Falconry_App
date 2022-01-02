@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="facebook_app_id">169498615380056</string>
+    <string name="fb_login_protocol_scheme">fb169498615380056</string>
+    <string name="app_name">falconry</string>
+    <string name="title_activity_main">falconry</string>
+    <string name="package_name">io.ionic.starter</string>
+    <string name="custom_url_scheme">io.ionic.starter</string>
+</resources>
