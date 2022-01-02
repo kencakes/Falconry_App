@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
 import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, User } from 'firebase/auth';
+import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -45,21 +45,41 @@ export class AuthService {
   }
 
   async signInWithGoogle(): Promise<void> {
+    // Sign in on the native layer
     const {credential: {idToken, accessToken}} = await FirebaseAuthentication.signInWithGoogle();
 
+    // Sign in on the web layer
     if (Capacitor.isNativePlatform()) {
       const credential = GoogleAuthProvider.credential(idToken, accessToken);
       await signInWithCredential(this.auth, credential);
     }
   }
 
-  async sendPhoneVerificationCode(phoneNumber: string): Promise<void> {
-    if (!Capacitor.isNativePlatform()) {
-      return;
-    }
+  async signInWithTwitter(): Promise<void>{
+    // Sign in on the native layer
+    const {credential: {idToken, accessToken}} = await FirebaseAuthentication.signInWithTwitter();
 
-    const {verificationId} = await FirebaseAuthentication.signInWithPhoneNumber({phoneNumber});
-    this.verificationId = verificationId;
+    // Sign in on the web layer
+    if (Capacitor.isNativePlatform()) {
+      const credential = TwitterAuthProvider.credential(idToken, accessToken);
+      await signInWithCredential(this.auth, credential);
+    }
+  }
+
+  async getCurrentUser(){
+    const result = await FirebaseAuthentication.getCurrentUser();
+    return result.user;
+  }
+
+  async signInWithFacebook(): Promise<void>{
+    // Sign in on the native layer
+    const {credential: {accessToken}} = await FirebaseAuthentication.signInWithFacebook();
+
+    // Sign in on the web layer
+    if (Capacitor.isNativePlatform()) {
+      const credential = FacebookAuthProvider.credential(accessToken);
+      await signInWithCredential(this.auth, credential);
+    }
   }
 
   async signInWithPhoneNumber(verificationCode: string): Promise<void> {
