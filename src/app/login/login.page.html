@@ -31,5 +31,25 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <!-- Facebook Login -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="tertiary" (click)="authService.signInWithFacebook()" fill="outline" shape="round">
+          <ion-icon slot="start" name="logo-facebook"></ion-icon>
+          Facebook
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Github Login -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="tertiary" (click)="authService.signInWithTwitter()" fill="outline" shape="round">
+          <ion-icon slot="start" name="logo-twitter"></ion-icon>
+          Twitter
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

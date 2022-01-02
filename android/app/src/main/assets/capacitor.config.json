@@ -8,11 +8,11 @@
 			"skipNativeAuth": false,
 			"providers": [
 				"phone",
-				"google.com"
+				"google.com",
+				"facebook.com",
+				"github.com",
+				"twitter.com"
 			]
 		}
-	},
-	"server": {
-		"url": "http://192.168.0.246:8101"
 	}
 }
