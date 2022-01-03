@@ -20,6 +20,8 @@ export class HomePage{
       this.birds = res;
       this.cd.detectChanges();
     });
+
+    //await LocalNotifications.requestPermission();
   }
 
   async openDetails(bird: Bird) {
