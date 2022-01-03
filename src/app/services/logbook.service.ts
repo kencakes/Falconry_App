@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, doc, docData, collectionData, addDoc, CollectionReference } from '@angular/fire/firestore';
+import { Firestore, collection, doc, docData, collectionData, addDoc, CollectionReference, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Logbook } from '../types/logbook';
 import { AuthService } from './auth.service';
@@ -18,7 +18,7 @@ export class LogbookService {
   }
 
   // Gets the ID
-  getLogbookById(id): Observable<Logbook> {
+  getLogbookByUserId(id): Observable<Logbook> {
     const logbookDocRef = doc(this.firestore, `logbook/${id}`);
     return docData(logbookDocRef, { idField: 'id' }) as Observable<Logbook>;
   }

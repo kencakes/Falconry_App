@@ -12,6 +12,11 @@ import { AuthService } from '../services/auth.service';
 export class LogbookPage implements OnInit {
 
   logbook: Logbook[] = [];
+  newName = '';
+  newLatin = '';
+  newDate = '';
+  newFood = '';
+  newAmount = '';
 
   constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService) {
     this.logbookService.getLogbook().subscribe(res => {
@@ -23,6 +28,7 @@ export class LogbookPage implements OnInit {
   ngOnInit() {
   }
 
-
-
+  async createLogbook(): Promise<void>{
+    await this.logbookService.creatLogbook(this.newName, this.newDate, this.newLatin, this.newFood, this.newAmount);
+  }
 }

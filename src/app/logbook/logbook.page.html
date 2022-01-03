@@ -38,8 +38,30 @@
     </ion-row>
   </ion-grid>
 
+  <ion-item lines="none">
+    <ion-input [(ngModel)]="newFood" placeholder="Food"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input [(ngModel)]="newAmount" placeholder="Amount"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input [(ngModel)]="newLatin" placeholder="Latin"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input [(ngModel)]="newName" placeholder="Name"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input [(ngModel)]="newDate" placeholder="Date"></ion-input>
+  </ion-item>
+
+
   <ion-footer>
-    <ion-button expand="full" color="tertiary" (click)="createLogbook()">
+    <ion-button expand="block" fill="outline" shape="round" (click)="createLogbook()">
+      <ion-icon slot="start" name="logo-arrow"></ion-icon>
       Toevoegen
     </ion-button>
   </ion-footer>
