@@ -31,6 +31,4 @@ export class LogbookPage implements OnInit {
   async createLogbook(): Promise<void>{
     await this.logbookService.creatLogbook(this.newName, this.newDate, this.newLatin, this.newFood, this.newAmount);
   }
-
-
 }
