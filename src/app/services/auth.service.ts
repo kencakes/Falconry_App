@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
 import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, User } from 'firebase/auth';
+import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInAnonymously,
+  User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -64,6 +65,13 @@ export class AuthService {
       const credential = TwitterAuthProvider.credential(idToken, accessToken);
       await signInWithCredential(this.auth, credential);
     }
+  }
+
+  signInAnonymously(){
+    signInAnonymously(this.auth)
+      .then(() => {
+        // Signed in..
+      });
   }
 
   async getCurrentUser(){
