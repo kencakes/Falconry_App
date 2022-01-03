@@ -57,12 +57,10 @@ export class AuthService {
   }
 
   async signInWithTwitter(): Promise<void>{
-    // Sign in on the native layer
-    const {credential: {idToken, accessToken}} = await FirebaseAuthentication.signInWithTwitter();
+    const {credential: {idToken, secret}} = await FirebaseAuthentication.signInWithTwitter();
 
-    // Sign in on the web layer
     if (Capacitor.isNativePlatform()) {
-      const credential = TwitterAuthProvider.credential(idToken, accessToken);
+      const credential = TwitterAuthProvider.credential(idToken, secret);
       await signInWithCredential(this.auth, credential);
     }
   }
@@ -75,10 +73,8 @@ export class AuthService {
   }
 
   async signInWithFacebook(): Promise<void>{
-    // Sign in on the native layer
     const {credential: {accessToken}} = await FirebaseAuthentication.signInWithFacebook();
 
-    // Sign in on the web layer
     if (Capacitor.isNativePlatform()) {
       const credential = FacebookAuthProvider.credential(accessToken);
       await signInWithCredential(this.auth, credential);
