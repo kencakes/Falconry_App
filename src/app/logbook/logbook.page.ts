@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { LogbookService } from '../services/logbook.service';
+import { Logbook } from '../types/logbook';
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-logbook',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogbookPage implements OnInit {
 
-  constructor() { }
+  logbook: Logbook[] = [];
+
+  constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService) {
+    this.logbookService.getLogbook().subscribe(res => {
+      this.logbook = res;
+      this.cd.detectChanges();
+    });
+  }
 
   ngOnInit() {
   }
+
+
 
 }
