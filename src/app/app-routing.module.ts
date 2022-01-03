@@ -37,9 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
-    path: 'logboek',
-    loadChildren: () => import('./logboek/logboek.module').then( m => m.LogboekPageModule)
+    path: 'logbook',
+    loadChildren: () => import('./logbook/logbook.module').then( m => m.LogbookPageModule)
   },
+
 
 ];
 

@@ -1,0 +1,14 @@
+ion-grid {
+  --ion-grid-column-padding: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+
+  ion-row:first-child {
+    font-weight: bold;
+  }
+
+  ion-row {
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+  }
+}

@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-margin">
+  <!-- Table Grid -->
+  <ion-grid class="ion-no-margin">
+    <ion-row>
+      <ion-col>Name</ion-col>
+      <ion-col>Date</ion-col>
+      <ion-col>Food</ion-col>
+      <ion-col>Amount</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let log of logbook">
+      <ion-col>{{log.name}}</ion-col>
+      <!--<ion-col>{{log.date}}</ion-col>-->
+      <ion-col>11 Jun 2021</ion-col>
+      <ion-col>{{log.food}}</ion-col>
+      <ion-col>{{log.amount}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-button expand="full" color="tertiary" (click)="createLogbook()">
+      Toevoegen
+    </ion-button>
+  </ion-footer>
+</ion-content>
