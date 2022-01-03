@@ -74,11 +74,6 @@ export class AuthService {
       });
   }
 
-  async getCurrentUser(){
-    const result = await FirebaseAuthentication.getCurrentUser();
-    return result.user;
-  }
-
   async signInWithFacebook(): Promise<void>{
     // Sign in on the native layer
     const {credential: {accessToken}} = await FirebaseAuthentication.signInWithFacebook();
