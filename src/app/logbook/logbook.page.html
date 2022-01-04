@@ -20,45 +20,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-no-margin">
-  <!-- Table Grid -->
-  <ion-grid class="ion-no-margin">
-    <ion-row>
-      <ion-col>Name</ion-col>
-      <ion-col>Date</ion-col>
-      <ion-col>Food</ion-col>
-      <ion-col>Amount</ion-col>
-    </ion-row>
-    <ion-row *ngFor="let log of logbook">
-      <ion-col>{{log.name}}</ion-col>
-      <!--<ion-col>{{log.date}}</ion-col>-->
-      <ion-col>11 Jun 2021</ion-col>
-      <ion-col>{{log.food}}</ion-col>
-      <ion-col>{{log.amount}}</ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content fullscreen>
+  <ion-card *ngFor="let log of logbook">
+    <!-- Card name -->
+    <ion-card-header>
+      <ion-card-title>{{log.name}}</ion-card-title>
+    </ion-card-header>
 
-  <ion-item lines="none">
-    <ion-input [(ngModel)]="newFood" placeholder="Food"></ion-input>
-  </ion-item>
+    <!-- All info in chips -->
+    <ion-card-content>
+      <ion-chip color="success">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>{{log.date}}</ion-label>
+      </ion-chip>
 
-  <ion-item lines="none">
-    <ion-input [(ngModel)]="newAmount" placeholder="Amount"></ion-input>
-  </ion-item>
+      <ion-chip color="tertiary">
+        <ion-icon name="time-outline"></ion-icon>
+        <ion-label>{{log.time}}</ion-label>
+      </ion-chip>
 
-  <ion-item lines="none">
-    <ion-input [(ngModel)]="newName" placeholder="Name"></ion-input>
-  </ion-item>
+      <ion-chip color="primary">
+        <ion-icon name="fast-food-outline"></ion-icon>
+        <ion-label>{{log.food}}</ion-label>
+      </ion-chip>
 
-  <ion-item lines="none">
-    <ion-input [(ngModel)]="newDate" placeholder="Date"></ion-input>
-  </ion-item>
+      <ion-chip color="secondary">
+        <ion-icon name="arrow-up-circle-outline"></ion-icon>
+        <ion-label>{{log.amount}}g</ion-label>
+      </ion-chip>
 
+      <ion-chip color="warning">
+        <ion-icon name="barbell-outline"></ion-icon>
+        <ion-label>{{log.weight}}g</ion-label>
+      </ion-chip>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-footer>
-    <ion-button expand="block" fill="outline" shape="round" (click)="createLogbook()">
-      <ion-icon slot="start" name="logo-arrow"></ion-icon>
-      Toevoegen
-    </ion-button>
-  </ion-footer>
+  <!-- Fab to navigato to a new window to add a log -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark" [routerLink]="['/create-logbook']">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
