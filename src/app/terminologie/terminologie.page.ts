@@ -13,11 +13,6 @@ export class TerminologiePage implements OnInit {
   data = [];
 
   constructor(public authService: AuthService) {
-    this.getTerms();
-  }
-
-  getTerms()
-  {
     const sorted = data.sort((a, b) => {
       if (a.woord < b.woord) {
         return -1;
@@ -40,15 +35,6 @@ export class TerminologiePage implements OnInit {
     }
   }
 
-  doRefresh(event){
-    this.getTerms();
-
-    setTimeout(() =>{
-      event.target.complete();
-    }, 2000);
-  }
-
   ngOnInit() {
   }
-
 }
