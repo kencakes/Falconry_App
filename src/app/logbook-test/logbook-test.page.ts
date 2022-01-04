@@ -11,10 +11,11 @@ import {AuthService} from '../services/auth.service';
 export class LogbookTestPage implements OnInit {
   logbook: Logbook[] = [];
   newName = '';
-  newLatin = '';
-  newDate = '';
   newFood = '';
-  newAmount = '';
+  newAmount = 0;
+  newDate = '';
+  newTime = '';
+  newWeight = 0;
 
   constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService) {
     this.logbookService.getLogbook().subscribe(res => {
@@ -27,7 +28,7 @@ export class LogbookTestPage implements OnInit {
   }
 
   async createLogbook(): Promise<void>{
-    await this.logbookService.creatLogbook(this.newName, this.newDate, this.newLatin, this.newFood, this.newAmount);
+    await this.logbookService.creatLogbook(this.newName, this.newFood, this.newAmount, this.newDate, this.newTime, this.newWeight);
   }
 
 }

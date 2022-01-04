@@ -1,9 +1,10 @@
 export interface Logbook{
   id?: string;
-  amount: string;
-  date: Date;
+  amount: number;
+  date: string;
+  time: string;
   food:  string;
-  latin: string;
   name: string;
+  weight: number;
   user: string;
 }

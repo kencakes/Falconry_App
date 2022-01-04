@@ -24,13 +24,14 @@ export class LogbookService {
   }
 
   // Create logbook entry
-  async creatLogbook(name, date, latin, food, amount): Promise<void> {
+  async creatLogbook(name, food, amount, date, time, weight): Promise<void> {
     const newLog: Logbook = {
-      date,
       name,
-      latin,
       food,
       amount,
+      date,
+      time,
+      weight,
       user: this.authService.getUserUID()
     };
     await addDoc<Logbook>(this.getCollectionRef<Logbook>('logbook'), newLog);
