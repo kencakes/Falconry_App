@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Bird } from '../types/bird.interface';
 
-export interface Bird{
-  id?: string;
-  about: string;
-  category: string;
-  image: string;
-  latijns: string;
-  name: string;
-}
 
 @Injectable({
   providedIn: 'root'
