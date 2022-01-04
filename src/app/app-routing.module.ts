@@ -40,6 +40,11 @@ const routes: Routes = [
     path: 'logbook',
     loadChildren: () => import('./logbook/logbook.module').then( m => m.LogbookPageModule)
   },
+  {
+    path: 'logbook-test',
+    loadChildren: () => import('./logbook-test/logbook-test.module').then( m => m.LogbookTestPageModule)
+  },
+
 
 
 ];
