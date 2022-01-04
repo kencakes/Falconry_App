@@ -3,7 +3,6 @@ import { LogbookService } from '../services/logbook.service';
 import { Logbook } from '../types/logbook';
 import { AuthService } from '../services/auth.service';
 
-
 @Component({
   selector: 'app-logbook',
   templateUrl: './logbook.page.html',
@@ -13,7 +12,6 @@ export class LogbookPage implements OnInit {
 
   logbook: Logbook[] = [];
   newName = '';
-  newLatin = '';
   newFood = '';
   newAmount = 0;
   newDate = '';

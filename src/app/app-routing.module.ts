@@ -29,10 +29,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
     path: 'favorites',
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
@@ -41,9 +37,6 @@ const routes: Routes = [
     loadChildren: () => import('./logbook/logbook.module').then( m => m.LogbookPageModule)
   },
   {
-    path: 'logbook-test',
-    loadChildren: () => import('./logbook-test/logbook-test.module').then( m => m.LogbookTestPageModule)
-  },  {
     path: 'create-logbook',
     loadChildren: () => import('./create-logbook/create-logbook.module').then( m => m.CreateLogbookPageModule)
   },
