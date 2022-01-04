@@ -41,6 +41,12 @@
             <ion-label>Logboek</ion-label>
           </ion-item>
 
+          <!-- Logboek -->
+          <ion-item routerLink="legislation">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Legislation</ion-label>
+          </ion-item>
+
           <!--  Dark Theme toggle -->
           <ion-item>
             <ion-icon slot="start" name="moon-outline"></ion-icon>
@@ -54,14 +60,6 @@
             <ion-icon slot="start" name="log-out-outline"></ion-icon>
             <ion-label>Log out</ion-label>
           </ion-item>
-          </ng-container>
-
-          <!-- Logout -->
-          <ng-container *ngIf="authService.isLoggedIn()">
-            <ion-item routerLink="logbook-test">
-              <ion-icon slot="start" name="log-out-outline"></ion-icon>
-              <ion-label>LogbookTest</ion-label>
-            </ion-item>
           </ng-container>
 
         </ion-list>
