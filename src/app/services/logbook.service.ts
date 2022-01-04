@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, doc, docData, collectionData, addDoc, CollectionReference, where } from '@angular/fire/firestore';
+import { Firestore, collection, doc, docData, collectionData, addDoc, CollectionReference,
+  deleteDoc, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Logbook } from '../types/logbook';
 import { AuthService } from './auth.service';
@@ -37,7 +38,16 @@ export class LogbookService {
     await addDoc<Logbook>(this.getCollectionRef<Logbook>('logbook'), newLog);
   }
 
+  // Delete a specific logbook entry
+  async deleteLogbook(logbook: string, id: string): Promise<void>{
+    await deleteDoc(this.getDocumentRef(logbook, id));
+  }
+
   private getCollectionRef<T>(collectionName: string): CollectionReference<T> {
     return collection(this.firestore, collectionName) as CollectionReference<T>;
+  }
+
+  private getDocumentRef<T>(collectionName: string, id: string): DocumentReference<T> {
+    return doc(this.firestore, `${collectionName}/${id}`) as DocumentReference<T>;
   }
 }
