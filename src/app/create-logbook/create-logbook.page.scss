@@ -1,6 +1,10 @@
-ion-item {
-  padding-left: 10%;
-  padding-right: 10%;
-  font-size: 0.9em;
-  margin-bottom: 10px;
+ion-content{
+  ion-item {
+    font-size: 0.9em;
+    margin: 20px 10%;
+  }
+}
+
+ion-button {
+  margin: 30px 10% 0 10%;
 }

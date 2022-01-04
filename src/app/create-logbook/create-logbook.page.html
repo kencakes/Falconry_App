@@ -50,4 +50,8 @@
       <ion-label position="floating">Amount</ion-label>
       <ion-input [(ngModel)]="newAmount"></ion-input>
     </ion-item>
+
+    <ion-button expand="block" fill="outline" shape="round" (click)="createLogbook()" [routerLink]="['/logbook-test']">
+        Toevoegen
+    </ion-button>
 </ion-content>
