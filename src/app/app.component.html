@@ -56,6 +56,14 @@
           </ion-item>
           </ng-container>
 
+          <!-- Logout -->
+          <ng-container *ngIf="authService.isLoggedIn()">
+            <ion-item routerLink="logbook-test">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
+              <ion-label>LogbookTest</ion-label>
+            </ion-item>
+          </ng-container>
+
         </ion-list>
       </ion-content>
     </ion-menu>
