@@ -8,6 +8,9 @@ import { LegislationPageRoutingModule } from './legislation-routing.module';
 
 import { LegislationPage } from './legislation.page';
 
+import { File } from '@ionic-native/file/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { LegislationPage } from './legislation.page';
     IonicModule,
     LegislationPageRoutingModule
   ],
-  declarations: [LegislationPage]
+  declarations: [LegislationPage],
+  providers: [File, HTTP]
 })
 export class LegislationPageModule {}

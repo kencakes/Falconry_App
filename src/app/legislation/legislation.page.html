@@ -20,7 +20,18 @@
   </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
-
+<ion-content class="ion-align-items-stretch">
+  <div class="ion-padding">
+    <ion-grid>
+      <!-- Google Login -->
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="authService.signInWithGoogle()" fill="outline" shape="round">
+            <ion-icon slot="start" name="cloud-download"></ion-icon>
+            Dierenwelzijn Vlaanderen
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
