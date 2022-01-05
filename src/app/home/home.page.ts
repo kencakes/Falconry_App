@@ -3,6 +3,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { BirdService, Bird } from '../services/bird.service';
 import { BirdDetailsPage } from '../bird-details/bird-details.page';
 import { AuthService } from '../services/auth.service';
+import { LocalnotificationService } from '../services/localnotification.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,15 @@ export class HomePage{
   birds: Bird[] = [];
 
   constructor(private birdService: BirdService, private cd: ChangeDetectorRef, private alertCtrl: AlertController,
-              private modalController: ModalController, public authService: AuthService) {
+              private modalController: ModalController, public authService: AuthService,
+              private localNotificationService: LocalnotificationService) {
     this.birdService.getBirds().subscribe(res => {
       this.birds = res;
       this.cd.detectChanges();
     });
+
+    this.localNotificationService.checkPermission();
+    this.localNotificationService.scheduledNotification(1, 'Reminder', 'Do not forget to weight your bird today!');
   }
 
   async openDetails(bird: Bird) {
