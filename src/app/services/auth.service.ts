@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
 import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, User } from 'firebase/auth';
+import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInAnonymously,
+  User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -56,26 +57,24 @@ export class AuthService {
   }
 
   async signInWithTwitter(): Promise<void>{
-    // Sign in on the native layer
-    const {credential: {idToken, accessToken}} = await FirebaseAuthentication.signInWithTwitter();
+    const {credential: {idToken, secret}} = await FirebaseAuthentication.signInWithTwitter();
 
-    // Sign in on the web layer
     if (Capacitor.isNativePlatform()) {
-      const credential = TwitterAuthProvider.credential(idToken, accessToken);
+      const credential = TwitterAuthProvider.credential(idToken, secret);
       await signInWithCredential(this.auth, credential);
     }
   }
 
-  async getCurrentUser(){
-    const result = await FirebaseAuthentication.getCurrentUser();
-    return result.user;
+  signInAnonymously(){
+    signInAnonymously(this.auth)
+      .then(() => {
+        // Signed in..
+      });
   }
 
   async signInWithFacebook(): Promise<void>{
-    // Sign in on the native layer
     const {credential: {accessToken}} = await FirebaseAuthentication.signInWithFacebook();
 
-    // Sign in on the web layer
     if (Capacitor.isNativePlatform()) {
       const credential = FacebookAuthProvider.credential(accessToken);
       await signInWithCredential(this.auth, credential);

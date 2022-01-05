@@ -36,9 +36,15 @@
           </ion-item>
 
           <!-- Logboek -->
-          <ion-item routerLink="logboek">
+          <ion-item routerLink="logbook" *ngIf="authService.isLoggedIn()">
             <ion-icon name="scale-outline" slot="start"></ion-icon>
             <ion-label>Logboek</ion-label>
+          </ion-item>
+
+          <!-- Logboek -->
+          <ion-item routerLink="legislation">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Legislation</ion-label>
           </ion-item>
 
           <!--  Dark Theme toggle -->
