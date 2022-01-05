@@ -22,6 +22,11 @@
         <ion-label>{{bird.verspreiding}}</ion-label>
       </ion-chip>
 
+      <ion-chip color="dark" (click)="addToFavorite()">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-label>favorite</ion-label>
+      </ion-chip>
+
       <ion-card-header>
         <ion-card-title>{{bird.name}}</ion-card-title>
         <ion-card-subtitle>{{bird.latijns}}</ion-card-subtitle>

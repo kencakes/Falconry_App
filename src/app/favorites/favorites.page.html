@@ -1,9 +1,36 @@
-<ion-header>
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
   <ion-toolbar>
-    <ion-title>favorites</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let bird of favoritedBirds">
+    <img src="{{bird.image}}" alt="{{bird.latijns}}"/>
+    <ion-chip color="success">
+      <ion-icon name="egg-outline"></ion-icon>
+      <ion-label>{{bird.eieren}} eieren</ion-label>
+    </ion-chip>
 
+    <ion-chip color="secondary">
+      <ion-icon name="swap-vertical-outline"></ion-icon>
+      <ion-label>{{bird.lengte}}cm</ion-label>
+    </ion-chip>
+  </ion-card>
 </ion-content>
