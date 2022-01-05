@@ -1,9 +1,10 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { BirdService, Bird } from '../services/bird.service';
+import { BirdService } from '../services/bird.service';
 import { BirdDetailsPage } from '../bird-details/bird-details.page';
 import { AuthService } from '../services/auth.service';
 import { LocalnotificationService } from '../services/localnotification.service';
+import { Bird } from '../types/bird.interface';
 
 @Component({
   selector: 'app-home',
