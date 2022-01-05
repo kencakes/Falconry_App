@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BirdService } from '../services/bird.service';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Bird } from '../types/bird.interface';
 
 @Component({
