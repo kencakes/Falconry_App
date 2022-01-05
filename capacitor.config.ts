@@ -11,6 +11,12 @@ const config: CapacitorConfig = {
       skipNativeAuth: false,
       providers: ['phone', 'google.com', 'facebook.com', 'github.com', 'twitter.com'],
     },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    LocalNotifications: {
+      smallIcon: 'ic_stat_icon_config_sample',
+      iconColor: '#488AFF',
+      sound: 'beep.wav',
+    },
   }
 };
 
