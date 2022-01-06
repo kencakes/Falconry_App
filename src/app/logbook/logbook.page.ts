@@ -36,10 +36,4 @@ export class LogbookPage implements OnInit {
   deleteLog(id: string){
     this.logbookService.deleteLogbook('logbook', id);
   }
-
-  /*
-  goToUpdatePage(id: string){
-    console.log(id);
-  }
-  */
 }
