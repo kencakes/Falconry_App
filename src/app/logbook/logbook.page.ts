@@ -26,9 +26,20 @@ export class LogbookPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   async createLogbook(): Promise<void>{
     await this.logbookService.creatLogbook(this.newName, this.newFood, this.newAmount, this.newDate, this.newTime, this.newWeight);
   }
+
+  deleteLog(id: string){
+    this.logbookService.deleteLogbook('logbook', id);
+  }
+
+  /*
+  goToUpdatePage(id: string){
+    console.log(id);
+  }
+  */
 }

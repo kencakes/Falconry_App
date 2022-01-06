@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
 import { Auth, signInWithCredential, signOut, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword,
-  TwitterAuthProvider, signInAnonymously,
-  User } from 'firebase/auth';
+import { updateProfile, GoogleAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword, TwitterAuthProvider,
+  signInAnonymously, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({

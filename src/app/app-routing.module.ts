@@ -39,7 +39,8 @@ const routes: Routes = [
   {
     path: 'create-logbook',
     loadChildren: () => import('./create-logbook/create-logbook.module').then( m => m.CreateLogbookPageModule)
-  },  {
+  },
+  {
     path: 'legislation',
     loadChildren: () => import('./legislation/legislation.module').then( m => m.LegislationPageModule)
   },
@@ -50,6 +51,14 @@ const routes: Routes = [
   {
     path: 'email-reset',
     loadChildren: () => import('./email-reset/email-reset.module').then( m => m.EmailResetPageModule)
+  },
+  {
+    path: 'achievements',
+    loadChildren: () => import('./achievements/achievements.module').then( m => m.AchievementsPageModule)
+  },
+  {
+    path: 'update-logbook/:id',
+    loadChildren: () => import('./update-logbook/update-logbook.module').then( m => m.UpdateLogbookPageModule)
   },
 
 
