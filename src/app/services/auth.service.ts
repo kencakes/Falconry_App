@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
-import { Auth, signInWithCredential, signOut, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithCredential, signOut, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
 import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword,
   TwitterAuthProvider, signInAnonymously,
   User } from 'firebase/auth';
@@ -88,6 +88,10 @@ export class AuthService {
 
   async signInEmailUser(email: string, password: string): Promise<void>{
     await signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  async resetEmailPassword(email: string): Promise<void>{
+    return sendPasswordResetEmail(this.auth, email);
   }
 
   async signInWithPhoneNumber(verificationCode: string): Promise<void> {
