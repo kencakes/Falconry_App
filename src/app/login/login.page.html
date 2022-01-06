@@ -4,14 +4,14 @@
       <ion-row>
         <ion-col>
           <h1>Welcome Falconer!</h1>
-          <p>Create an account to continue</p>
+          <p id="subtitle">Sign in to continue!</p>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <ion-item class="ion-no-padding">
-            <ion-input name="name" type="text" placeholder="Username" [(ngModel)]="email"></ion-input>
+            <ion-input name="name" type="email" placeholder="Username" [(ngModel)]="email"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -27,7 +27,7 @@
       <!-- Not registered yet? -->
       <ion-row>
         <ion-col>
-          <p [routerLink]="['/register']"> Not registered yet? </p>
+          <p [routerLink]="['/register']" id="register"> Not registered yet? </p>
         </ion-col>
       </ion-row>
 
