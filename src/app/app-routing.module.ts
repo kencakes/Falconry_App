@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'legislation',
     loadChildren: () => import('./legislation/legislation.module').then( m => m.LegislationPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'email-reset',
+    loadChildren: () => import('./email-reset/email-reset.module').then( m => m.EmailResetPageModule)
+  },
 
 
 ];
