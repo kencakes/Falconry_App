@@ -1,0 +1,46 @@
+<ion-content class="ion-align-items-stretch">
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>Welcome Falconer!</h1>
+          <p id="subtitle">Create an account to continue!</p>
+        </ion-col>
+      </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="ion-no-padding">
+              <ion-input name="name" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="ion-no-padding">
+              <ion-input name="email" type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-no-padding">
+            <ion-input name="email" type="password" placeholder="Repeat password" [(ngModel)]="repeatPassword"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+        <!-- Email Login -->
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="dark" fill="outline" (click)="createEmailUser()" >
+              <ion-icon slot="start" name="mail-outline"></ion-icon>
+              Register now
+            </ion-button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

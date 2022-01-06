@@ -9,10 +9,15 @@ import { Capacitor } from '@capacitor/core';
 })
 export class LoginPage implements OnInit {
   isNative = Capacitor.isNativePlatform();
+  email = '';
+  password = '';
 
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
 
+  signIn() {
+    this.authService.signInEmailUser(this.email, this.password);
+  }
 }

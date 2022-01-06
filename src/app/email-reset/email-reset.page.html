@@ -1,0 +1,30 @@
+<ion-content class="ion-align-items-stretch">
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>Password reset</h1>
+          <p id="subtitle">Give us your email to reset your password!</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-no-padding">
+            <ion-input name="name" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Email Login -->
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="dark" fill="outline" size="small" (click)="resetPassword()" >
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+              Reset your paswword
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
