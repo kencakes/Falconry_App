@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'legislation',
     loadChildren: () => import('./legislation/legislation.module').then( m => m.LegislationPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
 
 
 ];

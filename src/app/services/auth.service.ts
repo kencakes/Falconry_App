@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
-import { Auth, signInWithCredential, signOut } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInAnonymously,
+import { Auth, signInWithCredential, signOut, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword,
+  TwitterAuthProvider, signInAnonymously,
   User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
@@ -79,6 +80,14 @@ export class AuthService {
       const credential = FacebookAuthProvider.credential(accessToken);
       await signInWithCredential(this.auth, credential);
     }
+  }
+
+  async createEmailUser(email: string, password: string): Promise<void>{
+    await createUserWithEmailAndPassword(this.auth, email, password);
+  }
+
+  async signInEmailUser(email: string, password: string): Promise<void>{
+    await signInWithEmailAndPassword(this.auth, email, password);
   }
 
   async signInWithPhoneNumber(verificationCode: string): Promise<void> {

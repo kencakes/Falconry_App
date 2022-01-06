@@ -4,49 +4,78 @@
       <ion-row>
         <ion-col>
           <h1>Welcome Falconer!</h1>
-          <p>Sign in to continue</p>
+          <p>Create an account to continue</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-no-padding">
+            <ion-input name="name" type="text" placeholder="Username" [(ngModel)]="email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-no-padding">
+            <ion-input name="email" type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Not registered yet? -->
+      <ion-row>
+        <ion-col>
+          <p [routerLink]="['/register']"> Not registered yet? </p>
+        </ion-col>
+      </ion-row>
+
+      <!-- Email Login -->
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="dark" fill="outline" (click)="signIn()" shape="round">
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            Login with email
+          </ion-button>
         </ion-col>
       </ion-row>
 
       <!-- Google Login -->
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="danger" (click)="authService.signInWithGoogle()" fill="outline" shape="round">
+          <ion-button expand="block" color="danger" fill="outline" (click)="authService.signInWithGoogle()" shape="round">
             <ion-icon slot="start" name="logo-google"></ion-icon>
             Google
           </ion-button>
         </ion-col>
+
+      <!-- Facebook Login -->
+        <ion-col>
+          <ion-button expand="block" shape="round" fill="outline" (click)="authService.signInWithFacebook()">
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            Facebook
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- GitHub Login -->
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" shape="round" color="tertiary" fill="outline" (click)="authService.signInWithTwitter()">
+            <ion-icon slot="start" name="logo-twitter"></ion-icon>
+            Twitter
+          </ion-button>
+        </ion-col>
+
+      <!-- Anonymous Login -->
+        <ion-col>
+          <ion-button expand="block" shape="round" color="success" fill="outline" (click)="authService.signInAnonymously()">
+            <ion-icon slot="start" name="person-circle"></ion-icon>
+            Guest
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
-
-    <!-- Facebook Login -->
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" fill="outline" shape="round" (click)="authService.signInWithFacebook()">
-          <ion-icon slot="start" name="logo-facebook"></ion-icon>
-          Facebook
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
-    <!-- GitHub Login -->
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="authService.signInWithTwitter()">
-          <ion-icon slot="start" name="logo-twitter"></ion-icon>
-          Twitter
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
-    <!-- Anonymous Login -->
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" fill="outline" shape="round" color="success" (click)="authService.signInAnonymously()">
-          <ion-icon slot="start" name="person-circle"></ion-icon>
-          Guest
-        </ion-button>
-      </ion-col>
-    </ion-row>
   </div>
 </ion-content>
