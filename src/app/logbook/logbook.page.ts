@@ -28,6 +28,11 @@ export class LogbookPage implements OnInit {
   ngOnInit() {
   }
 
+  dataToJSONn(){
+    console.log('this.logbook: ', this.logbook);
+    // const downloadFile = JSON.parse(JSON.stringify((this.logbook)));
+  }
+
   async createLogbook(): Promise<void>{
     await this.logbookService.creatLogbook(this.newName, this.newFood, this.newAmount, this.newDate, this.newTime, this.newWeight);
   }

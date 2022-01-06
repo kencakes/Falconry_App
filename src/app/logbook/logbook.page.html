@@ -21,6 +21,12 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <!-- Test Button JSON data download -->
+  <ion-button expand="block" color="danger" (click)="dataToJSON()" fill="outline" shape="round">
+    <ion-icon slot="start" name="document-attach-outline"></ion-icon>
+    Download JSON Data
+  </ion-button>
+
   <ion-card *ngFor="let log of logbook">
     <!-- Card name -->
     <ion-card-header>
