@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
 import { Router } from '@angular/router';
 import { Auth, signInWithCredential, signOut, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
-import { updateProfile, GoogleAuthProvider, PhoneAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword,
-  TwitterAuthProvider, signInAnonymously,
-  User } from 'firebase/auth';
+import { updateProfile, GoogleAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword, TwitterAuthProvider,
+  signInAnonymously, User } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -12,7 +11,6 @@ import { Capacitor } from '@capacitor/core';
 })
 export class AuthService {
   private currentUser: null | User = null;
-  private verificationId: string;
 
   constructor(public auth: Auth, public router: Router) {
     this.auth.onAuthStateChanged(user => this.setCurrentUser(user));
@@ -93,14 +91,6 @@ export class AuthService {
   async resetEmailPassword(email: string): Promise<void>{
     return sendPasswordResetEmail(this.auth, email);
   }
-
-  async signInWithPhoneNumber(verificationCode: string): Promise<void> {
-    if (!Capacitor.isNativePlatform()) {
-      return;
-    }
-    const credential = PhoneAuthProvider.credential(this.verificationId, verificationCode);
-    await signInWithCredential(this.auth, credential);
-  };
 
   async updateDisplayName(displayName: string): Promise<void> {
     await updateProfile(this.auth.currentUser, {

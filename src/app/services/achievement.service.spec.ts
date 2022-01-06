@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PdfViewerService } from './pdf-viewer.service';
+import { AchievementService } from './achievement.service';
 
-describe('PdfViewerService', () => {
-  let service: PdfViewerService;
+describe('AchievementService', () => {
+  let service: AchievementService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PdfViewerService);
+    service = TestBed.inject(AchievementService);
   });
 
   it('should be created', () => {
