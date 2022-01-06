@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="logbook">
+    <ion-item>
+      <ion-label position="floating">Name: {{logbook.name}}</ion-label>
+      <ion-input [(ngModel)]="updatedName"></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label position="floating">Date: {{logbook.date}}</ion-label>
+      <ion-input [(ngModel)]="updatedDate"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Time: {{logbook.time}}</ion-label>
+      <ion-input [(ngModel)]="updatedTime"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Weight: {{logbook.weight}}</ion-label>
+      <ion-input [(ngModel)]="updatedWeight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Food: {{logbook.food}}</ion-label>
+      <ion-input [(ngModel)]="updatedFood"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Amount: {{logbook.amount}}</ion-label>
+      <ion-input [(ngModel)]="updatedAmount"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" fill="outline" shape="round" (click)="updateLog()" [routerLink]="['/logbook']">
+      Update
+    </ion-button>
+  </div>
+</ion-content>
