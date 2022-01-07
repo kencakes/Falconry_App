@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Logbook } from '../types/logbook';
 import { LogbookService } from '../services/logbook.service';
 import { ToastController } from '@ionic/angular';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-update-logbook',
@@ -20,16 +21,7 @@ export class UpdateLogbookPage implements OnInit {
   updatedWeight = 0;
 
   constructor(public authService: AuthService, private route: ActivatedRoute, private logbookService: LogbookService,
-              public toastCtrl: ToastController) {}
-
-  async confirmationToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'You have successfully updated the selected log!',
-      duration: 3000,
-      color: 'success'
-    });
-    await toast.present();
-  }
+              public toastCtrl: ToastController, private toastService: ToastService) {}
 
   ngOnInit() {
     const logId = this.route.snapshot.paramMap.get('id');
@@ -41,6 +33,6 @@ export class UpdateLogbookPage implements OnInit {
   async updateLog() {
     await this.logbookService.updateLogbook('logbook', this.logbook.id, this.updatedName, this.updatedAmount, this.updatedFood,
       this.updatedDate, this.updatedTime, this.updatedWeight);
-    await this.confirmationToast();
+    await this.toastService.confirmationToast('You have successfully updated the selected log!', 'success', 3000);
   }
 }

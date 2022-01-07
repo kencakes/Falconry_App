@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Logbook } from '../types/logbook';
 import { LogbookService } from '../services/logbook.service';
-import { ToastController } from '@ionic/angular';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-create-logbook',
@@ -19,23 +19,14 @@ export class CreateLogbookPage implements OnInit {
   newTime = '';
   newWeight = 0;
 
-  constructor(public authService: AuthService, private logbookService: LogbookService, public toastCtrl: ToastController) { }
+  constructor(public authService: AuthService, private logbookService: LogbookService, private toastService: ToastService) { }
 
   ngOnInit() {
   }
 
-  async confirmationToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'You have successfully added a log!',
-      duration: 3000,
-      color: 'success'
-    });
-    await toast.present();
-  }
-
   async createLogbook(): Promise<void>{
     await this.logbookService.creatLogbook(this.newName, this.newFood, this.newAmount, this.newDate, this.newTime, this.newWeight);
-    await this.confirmationToast();
+    await this.toastService.confirmationToast('You have successfully added a log!', 'success', 3000);
   }
 
 }

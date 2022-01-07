@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { LogbookService } from '../services/logbook.service';
+import { ToastService } from '../services/toast.service';
 import { Logbook } from '../types/logbook';
 import { AuthService } from '../services/auth.service';
 import { ActionSheetController } from '@ionic/angular';
@@ -13,31 +14,13 @@ import { Router } from '@angular/router';
 export class LogbookPage implements OnInit {
 
   logbook: Logbook[] = [];
-  newName = '';
-  newFood = '';
-  newAmount = 0;
-  newDate = '';
-  newTime = '';
-  newWeight = 0;
 
-  constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService,
-              public actionSheetController: ActionSheetController, public router: Router) {
+  constructor(private logbookService: LogbookService, private toastService: ToastService, private cd: ChangeDetectorRef,
+              public authService: AuthService, public actionSheetController: ActionSheetController, public router: Router) {
     this.logbookService.getLogbook().subscribe(res => {
       this.logbook = res;
       this.cd.detectChanges();
     });
-  }
-
-  ngOnInit() {
-
-  }
-
-  async createLogbook(): Promise<void>{
-    await this.logbookService.creatLogbook(this.newName, this.newFood, this.newAmount, this.newDate, this.newTime, this.newWeight);
-  }
-
-  deleteLog(id: string){
-    this.logbookService.deleteLogbook('logbook', id);
   }
 
   async presentActionSheet(id: string){
@@ -47,13 +30,14 @@ export class LogbookPage implements OnInit {
         {
           text: 'Delete',
           role: 'destructive',
-          icon: 'trash',
+          icon: 'trash-outline',
           handler: () => {
             this.logbookService.deleteLogbook('logbook', id);
+            this.toastService.confirmationToast('You have successfully deleted a log!', 'success', 3000);
           }
         }, {
           text: 'Update',
-          icon: 'trash',
+          icon: 'build-outline',
           handler: () => {
             this.router.navigate([`/update-logbook/${id}`]);
           }
@@ -61,5 +45,9 @@ export class LogbookPage implements OnInit {
       ]
     });
     await actionSheet.present();
+  }
+
+  ngOnInit() {
+
   }
 }
