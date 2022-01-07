@@ -21,38 +21,38 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <div *ngIf="logbook">
+  <div *ngIf="achievement">
     <ion-item>
-      <ion-label position="stacked">Name: {{logbook.name}}</ion-label>
-      <ion-input [(ngModel)]="updatedName"></ion-input>
+      <ion-label position="stacked">Name: {{achievement.birdName}}</ion-label>
+      <ion-input [(ngModel)]="updatedBirdName"></ion-input>
     </ion-item>
 
     <ion-item >
-      <ion-label position="stacked">Date: {{logbook.date}}</ion-label>
+      <ion-label position="stacked">Date: {{achievement.date}}</ion-label>
       <ion-input [(ngModel)]="updatedDate"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Time: {{logbook.time}}</ion-label>
+      <ion-label position="stacked">Time: {{achievement.time}}</ion-label>
       <ion-input [(ngModel)]="updatedTime"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Weight: {{logbook.weight}}</ion-label>
-      <ion-input [(ngModel)]="updatedWeight"></ion-input>
+      <ion-label position="stacked">Prey: {{achievement.prey}}</ion-label>
+      <ion-input [(ngModel)]="updatedPrey"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Food: {{logbook.food}}</ion-label>
-      <ion-input [(ngModel)]="updatedFood"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Amount: {{logbook.amount}}</ion-label>
+      <ion-label position="stacked">Amount: {{achievement.amount}}</ion-label>
       <ion-input [(ngModel)]="updatedAmount"></ion-input>
     </ion-item>
 
-    <ion-button expand="block" fill="outline" shape="round" (click)="updateLog()" [routerLink]="['/logbook']">
+    <ion-item>
+      <ion-label position="stacked">Comment: {{achievement.comment}}</ion-label>
+      <ion-input [(ngModel)]="updatedComment"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" fill="outline" shape="round" (click)="updateAchiev()" [routerLink]="['/logbook']">
       Update
     </ion-button>
   </div>

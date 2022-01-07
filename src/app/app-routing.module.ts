@@ -29,10 +29,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'favorites',
-    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
-  },
-  {
     path: 'logbook',
     loadChildren: () => import('./logbook/logbook.module').then( m => m.LogbookPageModule)
   },
@@ -55,9 +51,14 @@ const routes: Routes = [
   {
     path: 'update-logbook/:id',
     loadChildren: () => import('./update-logbook/update-logbook.module').then( m => m.UpdateLogbookPageModule)
-  },  {
+  },
+  {
     path: 'create-achievement',
     loadChildren: () => import('./create-achievement/create-achievement.module').then( m => m.CreateAchievementPageModule)
+  },
+  {
+    path: 'update-achievement/:id',
+    loadChildren: () => import('./update-achievement/update-achievement.module').then( m => m.UpdateAchievementPageModule)
   },
 
 
