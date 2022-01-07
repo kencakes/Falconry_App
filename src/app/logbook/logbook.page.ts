@@ -41,8 +41,14 @@ export class LogbookPage implements OnInit {
           handler: () => {
             this.router.navigate([`/update-logbook/${id}`]);
           }
-        }
-      ]
+        }, {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
     });
     await actionSheet.present();
   }

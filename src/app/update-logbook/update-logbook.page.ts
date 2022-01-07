@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Logbook } from '../types/logbook';
 import { LogbookService } from '../services/logbook.service';
-import { ToastController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
 
 @Component({
@@ -21,7 +20,7 @@ export class UpdateLogbookPage implements OnInit {
   updatedWeight = 0;
 
   constructor(public authService: AuthService, private route: ActivatedRoute, private logbookService: LogbookService,
-              public toastCtrl: ToastController, private toastService: ToastService) {}
+              private toastService: ToastService) {}
 
   ngOnInit() {
     const logId = this.route.snapshot.paramMap.get('id');
