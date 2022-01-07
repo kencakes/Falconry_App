@@ -39,9 +39,12 @@
 
       <ion-chip color="primary">
         <ion-icon name="calendar-outline"></ion-icon>
-        <ion-label>
-          {{achiev.date.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}
-        </ion-label>
+        <ion-label>{{achiev.date}}</ion-label>
+      </ion-chip>
+
+      <ion-chip color="success">
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>{{achiev.time}}</ion-label>
       </ion-chip>
     </ion-card-content>
   </ion-card>

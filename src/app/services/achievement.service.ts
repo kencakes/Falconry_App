@@ -25,29 +25,31 @@ export class AchievementService {
   }
 
   // Creates an achievement
-  async createAchievement(amount, date, prey, birdName, comment): Promise<void> {
+  async createAchievement(amount, date, time, prey, birdName, comment): Promise<void> {
     const newAchievement: Achievement = {
       amount,
       date,
+      time,
       prey,
       birdName,
       comment,
       user: this.authService.getUserUID()
     };
-    await addDoc<Achievement>(this.getCollectionRef<Achievement>('achievement'), newAchievement);
+    await addDoc<Achievement>(this.getCollectionRef<Achievement>('achievements'), newAchievement);
   }
 
   // Updates an achievement
-  async updateAchievement(fbCollection: string, id: string, amount, date, prey, birdName, comment): Promise<void> {
-    const achievement: Achievement = {
+  async updateAchievement(fbCollection: string, id: string, amount, date, time, prey, birdName, comment): Promise<void> {
+    const achievements: Achievement = {
       amount,
       date,
+      time,
       prey,
       birdName,
       comment,
       user: this.authService.getUserUID()
     };
-    await updateDoc(this.getDocumentRef(fbCollection, id), achievement);
+    await updateDoc(this.getDocumentRef(fbCollection, id), achievements);
   }
 
   // Deletes a specific achievement

@@ -1,7 +1,8 @@
 export interface Achievement{
   id?: string;
   amount: number;
-  date: Date;
+  date: string;
+  time: string;
   prey:  string;
   user: string;
   birdName: string;

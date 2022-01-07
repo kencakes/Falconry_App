@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'update-logbook/:id',
     loadChildren: () => import('./update-logbook/update-logbook.module').then( m => m.UpdateLogbookPageModule)
+  },  {
+    path: 'create-achievement',
+    loadChildren: () => import('./create-achievement/create-achievement.module').then( m => m.CreateAchievementPageModule)
   },
+
 
 
 ];
