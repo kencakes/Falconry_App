@@ -4,7 +4,7 @@ import { BirdService } from '../services/bird.service';
 import { BirdDetailsPage } from '../bird-details/bird-details.page';
 import { AuthService } from '../services/auth.service';
 import { LocalnotificationService } from '../services/localnotification.service';
-import { Bird } from '../types/bird.interface';
+import { Bird } from '../types/bird';
 
 @Component({
   selector: 'app-home',
