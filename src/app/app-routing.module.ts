@@ -41,10 +41,6 @@ const routes: Routes = [
     loadChildren: () => import('./create-logbook/create-logbook.module').then( m => m.CreateLogbookPageModule)
   },
   {
-    path: 'legislation',
-    loadChildren: () => import('./legislation/legislation.module').then( m => m.LegislationPageModule)
-  },
-  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },

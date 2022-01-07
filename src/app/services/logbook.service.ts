@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   Firestore, collection, doc, updateDoc, collectionData, addDoc, CollectionReference, deleteDoc,
-  DocumentReference, where, docData
+  DocumentReference, docData
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Logbook } from '../types/logbook';
@@ -42,7 +42,7 @@ export class LogbookService {
   }
 
   // Updates a log
-  async updateLogbook(channel: string, id: string, name, amount, food, date, time, weight): Promise<void> {
+  async updateLogbook(fbCollection: string, id: string, name, amount, food, date, time, weight): Promise<void> {
     const logbook: Logbook = {
       name,
       food,
@@ -52,7 +52,7 @@ export class LogbookService {
       weight,
       user: this.authService.getUserUID()
     };
-    await updateDoc(this.getDocumentRef(channel, id), logbook);
+    await updateDoc(this.getDocumentRef(fbCollection, id), logbook);
   }
 
   // Deletes a specific logbook entry
