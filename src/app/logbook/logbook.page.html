@@ -21,42 +21,41 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-card *ngFor="let log of logbook" routerLink="/update-logbook/{{log.id}}">
-    <!-- Card name -->
-    <ion-card-header>
-      <ion-card-title>{{log.name}}</ion-card-title>
-    </ion-card-header>
+    <ion-card *ngFor="let log of logbook" (click)="presentActionSheet(log.id)">
 
-    <!-- All info in chips -->
-    <ion-card-content>
-      <ion-icon name="trash-outline" (click)="deleteLog(log.id)"></ion-icon>
+      <!-- Card name -->
+      <ion-card-header>
+        <h1>{{log.name}}</h1>
+      </ion-card-header>
 
-      <ion-chip color="success">
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-label>{{log.date}}</ion-label>
-      </ion-chip>
+      <!-- All info in chips -->
+      <ion-card-content>
+        <ion-chip color="success">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-label>{{log.date}}</ion-label>
+        </ion-chip>
 
-      <ion-chip color="tertiary">
-        <ion-icon name="time-outline"></ion-icon>
-        <ion-label>{{log.time}}</ion-label>
-      </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>{{log.time}}</ion-label>
+        </ion-chip>
 
-      <ion-chip color="primary">
-        <ion-icon name="restaurant-outline"></ion-icon>
-        <ion-label>{{log.food}}</ion-label>
-      </ion-chip>
+        <ion-chip color="primary">
+          <ion-icon name="restaurant-outline"></ion-icon>
+          <ion-label>{{log.food}}</ion-label>
+        </ion-chip>
 
-      <ion-chip color="secondary">
-        <ion-icon name="arrow-up-circle-outline"></ion-icon>
-        <ion-label>{{log.amount}}g</ion-label>
-      </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="arrow-up-circle-outline"></ion-icon>
+          <ion-label>{{log.amount}}g</ion-label>
+        </ion-chip>
 
-      <ion-chip color="warning">
-        <ion-icon name="scale-outline"></ion-icon>
-        <ion-label>{{log.weight}}g</ion-label>
-      </ion-chip>
-    </ion-card-content>
-  </ion-card>
+        <ion-chip color="warning">
+          <ion-icon name="scale-outline"></ion-icon>
+          <ion-label>{{log.weight}}g</ion-label>
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
 
   <!-- Fab to navigato to a new window to add a log -->
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">

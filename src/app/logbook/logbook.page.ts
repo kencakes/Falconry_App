@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { LogbookService } from '../services/logbook.service';
 import { Logbook } from '../types/logbook';
 import { AuthService } from '../services/auth.service';
+import { ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logbook',
@@ -18,7 +20,8 @@ export class LogbookPage implements OnInit {
   newTime = '';
   newWeight = 0;
 
-  constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService) {
+  constructor(private logbookService: LogbookService, private cd: ChangeDetectorRef, public authService: AuthService,
+              public actionSheetController: ActionSheetController, public router: Router) {
     this.logbookService.getLogbook().subscribe(res => {
       this.logbook = res;
       this.cd.detectChanges();
@@ -35,5 +38,28 @@ export class LogbookPage implements OnInit {
 
   deleteLog(id: string){
     this.logbookService.deleteLogbook('logbook', id);
+  }
+
+  async presentActionSheet(id: string){
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Options',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            this.logbookService.deleteLogbook('logbook', id);
+          }
+        }, {
+          text: 'Update',
+          icon: 'trash',
+          handler: () => {
+            this.router.navigate([`/update-logbook/${id}`]);
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
   }
 }
