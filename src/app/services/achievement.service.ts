@@ -12,9 +12,10 @@ export class AchievementService {
 
   constructor(private authService: AuthService, private firestore: Firestore) { }
 
-  getAchievements(){
+  // Ophalen achievements
+  getAchievements(): Observable<Achievement[]> {
     const achievementRef = collection(this.firestore, 'achievements');
-    return collectionData(achievementRef, {idField: 'id'}) as Observable<Achievement[]>;
+    return collectionData(achievementRef, { idField: 'id'}) as Observable<Achievement[]>;
   }
 
   // Gets the ID

@@ -20,6 +20,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-card *ngFor="let achiev of achievement" (click)="presentActionSheet(achiev.id)">
+
+    <!-- Card name -->
+    <ion-card-header>
+      <h2>{{achiev.birdName}}</h2>
+      <p>{{achiev.comment}}</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-chip color="tertiary">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <ion-label>
+          {{achiev.prey}}
+        </ion-label>
+      </ion-chip>
+
+      <ion-chip color="primary">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>
+          {{achiev.date.toDate() | date:'dd/MM/yyyy h:mm:ss a'}}
+        </ion-label>
+      </ion-chip>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Fab to navigato to a new window to add an achievement -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark" [routerLink]="['/create-achievement']">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
