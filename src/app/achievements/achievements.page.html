@@ -1,9 +1,59 @@
-<ion-header>
+<ion-header class="ion-no-border">
+  <!-- menu -->
+  <!-- Navigation Bar - Top -->
   <ion-toolbar>
-    <ion-title>achievements</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+        <ion-icon name="apps"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-item lines="none" slot="end">
+      <ion-label>
+        <p>Hello</p>
+        <h3>{{authService.getDisplayName()}}</h3>
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="authService.getProfilePic()" alt="profile picture">
+      </ion-avatar>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-card *ngFor="let achiev of achievement" (click)="presentActionSheet(achiev.id)">
+
+    <!-- Card name -->
+    <ion-card-header>
+      <h2>{{achiev.birdName}}</h2>
+      <p>{{achiev.comment}}</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-chip color="tertiary">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <ion-label>
+          {{achiev.prey}}
+        </ion-label>
+      </ion-chip>
+
+      <ion-chip color="primary">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>{{achiev.date}}</ion-label>
+      </ion-chip>
+
+      <ion-chip color="success">
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>{{achiev.time}}</ion-label>
+      </ion-chip>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Fab to navigato to a new window to add an achievement -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark" [routerLink]="['/create-achievement']">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
