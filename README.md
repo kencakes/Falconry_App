@@ -8,10 +8,6 @@
 
 <br/>
 
-HOME            |  INFO         
-:-------------------------:|:-------------------------:
-![](images/falconry_app_home.jpg)  |  ![](images/falconry_app_info.jpg)
-
-TERMS             |   MENU         
-:-------------------------:|:-------------------------:
-![](images/falconry_app_terminology.jpg)  |  ![](images/falconry_app_menu.jpg)
+HOME            |  MENU         | TERMS
+:-------------------------:|:-------------------------:|:-------------------------:
+![](images/falconry_app_home.jpg)  |  ![](images/falconry_app_menu.jpg) | ![](images/falconry_app_terminology.jpg)
