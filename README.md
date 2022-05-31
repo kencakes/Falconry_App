@@ -1,4 +1,12 @@
-# Falconry_App
+# Falconry App
+<br/>
+
+* View information about birds
+* Have your own birds logbook on your phone
+* Look at common terms used in falconry
+* Add achievements
+
+<br/>
 
 HOME            |  INFO         
 :-------------------------:|:-------------------------:
